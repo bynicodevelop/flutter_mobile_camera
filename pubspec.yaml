@@ -1,6 +1,6 @@
 name: flutter_mobile_camera
 description: This plugin allows you to take front and back photos by integrating the camera into your application.
-version: 0.0.1+2
+version: 0.0.1+3
 homepage: https://github.com/bynicodevelop/flutter_mobile_camera
 
 environment:

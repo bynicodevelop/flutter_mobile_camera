@@ -1,3 +1,8 @@
+## 0.0.1+3
+
+- Added IOS
+- Updated documentation
+
 ## 0.0.1+2
 
 - Fixed unit tests
