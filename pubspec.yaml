@@ -1,8 +1,7 @@
 name: flutter_mobile_camera
-description: A new flutter plugin project.
+description: Add camera in your project.
 version: 0.0.1
-author:
-homepage:
+homepage: https://nico-develop.com
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -13,6 +12,7 @@ dependencies:
     sdk: flutter
 
   path_provider: ^1.6.24
+  path: ^1.7.0
 
   camera: ^0.5.8+11
 
@@ -39,6 +39,7 @@ flutter:
         package: com.nicodevelop.flutter_mobile_camera
         pluginClass: FlutterMobileCameraPlugin
       ios:
+        package: com.nicodevelop.flutter_mobile_camera
         pluginClass: FlutterMobileCameraPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
