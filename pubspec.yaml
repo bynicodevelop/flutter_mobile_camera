@@ -1,7 +1,7 @@
 name: flutter_mobile_camera
-description: Add camera in your project.
-version: 0.0.1
-homepage: https://nico-develop.com
+description: This plugin allows you to take photos directly integrated into your application.
+version: 0.0.1+2
+homepage: https://github.com/bynicodevelop/flutter_mobile_camera
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

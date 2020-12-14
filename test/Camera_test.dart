@@ -1,5 +1,5 @@
 import 'package:flutter_mobile_camera/Cameras.dart';
-import 'package:flutter_mobile_camera/camera.dart';
+import 'package:flutter_mobile_camera/flutter_mobile_camera.dart';
 import 'package:flutter_mobile_camera/services/CameraService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,6 +11,9 @@ main() {
     MockCameraService cameraService = MockCameraService();
 
     when(cameraService.isReady).thenAnswer((_) => Future.value(true));
+    when(cameraService.aspectRatio).thenReturn(1.0);
+
+    when(cameraService.takePhoto()).thenAnswer((_) => Future.value('/path'));
 
     await tester.pumpWidget(
       MaterialApp(
@@ -45,8 +48,6 @@ main() {
     expect(flipButton, findsOneWidget);
 
     expect(sendButton, findsNothing);
-
-    // verify(cameraService.cameraRender());
   });
 
   testWidgets('Should call back method', (WidgetTester tester) async {
