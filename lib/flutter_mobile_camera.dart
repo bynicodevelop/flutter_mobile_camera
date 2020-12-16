@@ -1,8 +1,9 @@
 import 'dart:io';
 
-import 'package:flutter_mobile_camera/Cameras.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobile_camera/services/CameraService.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 
 class Camera extends StatefulWidget {
   final Function onBack;
@@ -26,13 +27,23 @@ class Camera extends StatefulWidget {
 }
 
 class _CameraState extends State<Camera> {
+  CameraService cameraService;
+
   String _imagePath = '';
   bool _loading = false;
 
   @override
+  void initState() {
+    cameraService = Provider.of<CameraService>(context, listen: false);
+
+    cameraService.refresh = () => setState(() => print('refreshing view...'));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    Cameras.of(context).cameraService.refresh =
-        () => setState(() => print('refreshing view...'));
+    // cameraService.refresh =
+    //     () => setState(() => print('refreshing view...'));
 
     Size size = MediaQuery.of(context).size;
 
@@ -65,7 +76,7 @@ class _CameraState extends State<Camera> {
           children: [
             Center(
               child: FutureBuilder(
-                future: Cameras.of(context).cameraService.isReady,
+                future: cameraService.isReady,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState != ConnectionState.done) {
                     return SpinKitThreeBounce(
@@ -75,13 +86,12 @@ class _CameraState extends State<Camera> {
                   }
 
                   return Transform.scale(
-                    scale: Cameras.of(context).cameraService.aspectRatio /
+                    scale: cameraService.aspectRatio /
                         MediaQuery.of(context).size.aspectRatio,
                     child: AspectRatio(
-                      aspectRatio:
-                          Cameras.of(context).cameraService.aspectRatio,
+                      aspectRatio: cameraService.aspectRatio,
                       child: _imagePath.isEmpty
-                          ? Cameras.of(context).cameraService.cameraRender()
+                          ? cameraService.cameraRender()
                           : Image(
                               image: FileImage(
                                 File(_imagePath),
@@ -111,7 +121,7 @@ class _CameraState extends State<Camera> {
                     color: Colors.transparent,
                     child: InkWell(
                       customBorder: CircleBorder(),
-                      onTap: Cameras.of(context).cameraService.changeCamera,
+                      onTap: cameraService.changeCamera,
                       child: Icon(
                         Icons.loop,
                         color: Colors.white,
@@ -201,8 +211,7 @@ class _CameraState extends State<Camera> {
             child: FloatingActionButton(
               splashColor: Colors.white,
               onPressed: () async {
-                String imagePath =
-                    await Cameras.of(context).cameraService.takePhoto();
+                String imagePath = await cameraService.takePhoto();
 
                 setState(() => _imagePath = imagePath);
 

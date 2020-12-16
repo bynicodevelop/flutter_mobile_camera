@@ -1,9 +1,9 @@
-import 'package:flutter_mobile_camera/Cameras.dart';
 import 'package:flutter_mobile_camera/flutter_mobile_camera.dart';
 import 'package:flutter_mobile_camera/services/CameraService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:provider/provider.dart';
 
 main() {
   testWidgets('Background should be black', (WidgetTester tester) async {
@@ -18,8 +18,8 @@ main() {
     await tester.pumpWidget(
       MaterialApp(
           title: 'Flutter Demo',
-          home: Cameras(
-            cameraService: cameraService,
+          home: Provider<CameraService>(
+            create: (_) => cameraService,
             child: Camera(
               onBack: () => null,
               onSend: (path) => null,
@@ -39,7 +39,7 @@ main() {
 
     final Finder sendButton = find.text('Send');
 
-    // ASSERT
+    // // ASSERT
     expect(container.color, Colors.black);
     expect(iconBack.color, Colors.white);
 
@@ -58,8 +58,8 @@ main() {
     await tester.pumpWidget(
       MaterialApp(
         title: 'Flutter Demo',
-        home: Cameras(
-          cameraService: cameraService,
+        home: Provider<CameraService>(
+          create: (_) => cameraService,
           child: Camera(
             onBack: () => methodCalled = true,
             onSend: (path) => null,
@@ -91,8 +91,8 @@ main() {
     await tester.pumpWidget(
       MaterialApp(
         title: 'Flutter Demo',
-        home: Cameras(
-          cameraService: cameraService,
+        home: Provider<CameraService>(
+          create: (_) => cameraService,
           child: Camera(
             onBack: () => null,
             onSend: (path) => null,
@@ -134,8 +134,8 @@ main() {
     await tester.pumpWidget(
       MaterialApp(
         title: 'Flutter Demo',
-        home: Cameras(
-          cameraService: cameraService,
+        home: Provider<CameraService>(
+          create: (_) => cameraService,
           child: Camera(
             onBack: null,
             onSend: (path) => null,
@@ -181,8 +181,8 @@ main() {
     await tester.pumpWidget(
       MaterialApp(
         title: 'Flutter Demo',
-        home: Cameras(
-          cameraService: cameraService,
+        home: Provider<CameraService>(
+          create: (_) => cameraService,
           child: Camera(
             onBack: () => null,
             onSend: (path) => methodCalled = path,
@@ -218,8 +218,8 @@ main() {
     await tester.pumpWidget(
       MaterialApp(
         title: 'Flutter Demo',
-        home: Cameras(
-          cameraService: cameraService,
+        home: Provider<CameraService>(
+          create: (_) => cameraService,
           child: Camera(
             onBack: () => null,
             onSend: (path) => null,

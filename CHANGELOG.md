@@ -1,3 +1,7 @@
+## 0.0.2
+
+- Replaced the Inherited widget by the package Provider
+
 ## 0.0.1+3
 
 - Added IOS
