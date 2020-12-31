@@ -1,3 +1,7 @@
+## 0.0.2+1
+
+- Clean and change example
+
 ## 0.0.2
 
 - Replaced the Inherited widget by the package Provider

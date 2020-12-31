@@ -2,7 +2,6 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobile_camera/getaway/Camera.dart';
 import 'package:flutter_mobile_camera/services/CameraService.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
 class CameraBuilder extends StatelessWidget {
