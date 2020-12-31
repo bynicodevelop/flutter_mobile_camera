@@ -17,15 +17,13 @@ main() {
 
     await tester.pumpWidget(
       MaterialApp(
-          title: 'Flutter Demo',
-          home: Provider<CameraService>(
-            create: (_) => cameraService,
-            child: Camera(
-              onBack: () => null,
-              onSend: (path) => null,
-              onTakePhoto: (path) => null,
-            ),
-          )),
+        title: 'Flutter Demo',
+        home: Camera(
+          onBack: () => null,
+          onSend: (path) => null,
+          onTakePhoto: (path) => null,
+        ),
+      ),
     );
 
     // ACT

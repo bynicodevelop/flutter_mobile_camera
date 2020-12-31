@@ -46,18 +46,14 @@ class CameraView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('view');
     // To initialize camera mobile
-    return CameraBuilder(
-      // Display the camera in the app
-      child: Camera(
-        // Lets go back !
-        onBack: () => print('Back navigator'),
-        // When you want to recover the photo to send it to the cloud
-        onSend: (imagePath) => print(imagePath),
-        // Capture the photo taking event
-        onTakePhoto: (imagePath) => print(imagePath),
-      ),
+    return Camera(
+      // Lets go back !
+      onBack: () => Navigator.pop(context),
+      // When you want to recover the photo to send it to the cloud
+      onSend: (imagePath) => print(imagePath),
+      // Capture the photo taking event
+      onTakePhoto: (imagePath) => print(imagePath),
     );
   }
 }
