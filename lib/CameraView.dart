@@ -42,9 +42,6 @@ class _CameraState extends State<CameraView> {
 
   @override
   Widget build(BuildContext context) {
-    // cameraService.refresh =
-    //     () => setState(() => print('refreshing view...'));
-
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -141,14 +138,16 @@ class _CameraState extends State<CameraView> {
                     vertical: 10.0,
                     horizontal: 20.0,
                   ),
-                  onPressed: () async {
-                    setState(() => _loading = !_loading);
+                  onPressed: !_loading
+                      ? () async {
+                          setState(() => _loading = !_loading);
 
-                    await widget.onSend(_imagePath);
+                          await widget.onSend(_imagePath);
 
-                    setState(() => _imagePath = '');
-                    setState(() => _loading = !_loading);
-                  },
+                          setState(() => _imagePath = '');
+                          setState(() => _loading = !_loading);
+                        }
+                      : null,
                   child: Row(
                     children: [
                       Text(
@@ -178,6 +177,15 @@ class _CameraState extends State<CameraView> {
                 left: 20.0,
                 child: Row(
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        right: 8.0,
+                      ),
+                      child: SpinKitThreeBounce(
+                        color: Colors.white,
+                        size: 15.0,
+                      ),
+                    ),
                     Text(
                       widget.publishingBtnLabel,
                       style: TextStyle(

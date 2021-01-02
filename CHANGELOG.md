@@ -1,3 +1,7 @@
+## 0.0.2+3
+
+- Locked button when user send photo
+
 ## 0.0.2+2
 
 - Simplification of the plugin call

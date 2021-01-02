@@ -51,7 +51,11 @@ class CameraView extends StatelessWidget {
       // Lets go back !
       onBack: () => Navigator.pop(context),
       // When you want to recover the photo to send it to the cloud
-      onSend: (imagePath) => print(imagePath),
+      onSend: (imagePath) async {
+        await Future.delayed(Duration(seconds: 3));
+
+        print(imagePath);
+      },
       // Capture the photo taking event
       onTakePhoto: (imagePath) => print(imagePath),
     );
